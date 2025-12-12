@@ -91,6 +91,15 @@ CON_COMMAND_CHAT(nominate, "[mapname] - Nominate a map (empty to clear nominatio
 	g_pMapVoteSystem->AttemptNomination(player, args.ArgC() < 2 ? "" : args[1]);
 }
 
+CON_COMMAND_CHAT(nom, "[mapname] - Nominate a map (empty to clear nomination or list all maps)")
+{
+	if (!g_cvarVoteManagerEnable.Get() || !player)
+		return;
+
+	g_pMapVoteSystem->AttemptNomination(player, args.ArgC() < 2 ? "" : args[1]);
+}
+
+
 CON_COMMAND_CHAT(nomlist, "- List the list of nominations")
 {
 	if (!g_cvarVoteManagerEnable.Get())
